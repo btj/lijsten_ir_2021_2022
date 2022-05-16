@@ -1,6 +1,6 @@
 package lijsten;
 
-public class LegeLijst extends Lijst {
+public class LegeLijst<T> extends Lijst<T> {
 
 	public LegeLijst() {}
 	

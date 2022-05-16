@@ -1,9 +1,9 @@
 package lijsten;
 
-public interface IntIterator {
+public interface Iterator<T> {
 	
 	boolean hasNext();
 	
-	int next();
+	T next();
 
 }

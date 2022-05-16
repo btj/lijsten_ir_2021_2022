@@ -11,22 +11,22 @@ class LijstenTest {
 
 	@Test
 	void test() {
-		NietLegeLijst eenTweeDrie = new NietLegeLijst(1,
-				new NietLegeLijst(2,
-						new NietLegeLijst(3, new LegeLijst())));
-		Lijst mijnLijst = eenTweeDrie;
+		NietLegeLijst<Integer> eenTweeDrie = new NietLegeLijst<>(1,
+				new NietLegeLijst<>(2,
+						new NietLegeLijst<>(3, new LegeLijst<>())));
+		Lijst<Integer> mijnLijst = eenTweeDrie;
 		
 		assertEquals(3, mijnLijst.getLength());
 		assertEquals(1, eenTweeDrie.getKop());
-		Lijst tweeDrie = new NietLegeLijst(2, new NietLegeLijst(3, new LegeLijst()));
+		Lijst<Integer> tweeDrie = new NietLegeLijst<>(2, new NietLegeLijst<>(3, new LegeLijst<>()));
 		assertEquals(tweeDrie, eenTweeDrie.getStaart());
 		assertNotEquals(tweeDrie, eenTweeDrie);
 		assertEquals("[1, 2, 3]", eenTweeDrie + "");
-		assertEquals("[]", new LegeLijst() + "");
-		Lijst tweeTweeDrie = new NietLegeLijst(2, tweeDrie);
+		assertEquals("[]", new LegeLijst<Integer>() + "");
+		Lijst<Integer> tweeTweeDrie = new NietLegeLijst<>(2, tweeDrie);
 		assertNotEquals(eenTweeDrie, tweeTweeDrie);
 		
-		IntIterator iterator = eenTweeDrie.iterator();
+		Iterator<Integer> iterator = eenTweeDrie.iterator();
 		assertTrue(iterator.hasNext());
 		assertEquals(1, iterator.next());
 		assertTrue(iterator.hasNext());

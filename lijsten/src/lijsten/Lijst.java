@@ -1,12 +1,12 @@
 package lijsten;
 
-public abstract class Lijst {
+public abstract class Lijst<T> {
 
 	public abstract int getLength();
 	
-	public IntIterator iterator() {
-		return new IntIterator() {
-			Lijst lijst = Lijst.this;
+	public Iterator<T> iterator() {
+		return new Iterator<T>() {
+			Lijst<T> lijst = Lijst.this;
 			
 			@Override
 			public boolean hasNext() {
@@ -14,18 +14,18 @@ public abstract class Lijst {
 			}
 			
 			@Override
-			public int next() {
-				NietLegeLijst nll = (NietLegeLijst)lijst;
+			public T next() {
+				NietLegeLijst<T> nll = (NietLegeLijst<T>)lijst;
 				lijst = nll.getStaart();
 				return nll.getKop();
 			}
 		};
 	}
 	
-	public void forEach(IntConsumer consumer) {
-		Lijst lijst = this;
+	public void forEach(Consumer<? super T> consumer) {
+		Lijst<T> lijst = this;
 		for (;;) {
-			if (lijst instanceof NietLegeLijst nll) {
+			if (lijst instanceof NietLegeLijst<T> nll) {
 				consumer.accept(nll.getKop());
 				lijst = nll.getStaart();
 			} else

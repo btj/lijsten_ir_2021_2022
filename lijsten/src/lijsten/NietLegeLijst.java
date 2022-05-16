@@ -1,14 +1,14 @@
 package lijsten;
 
-public class NietLegeLijst extends Lijst {
+public class NietLegeLijst<T> extends Lijst<T> {
 
-	private int kop;
-	private Lijst staart;
+	private T kop;
+	private Lijst<T> staart;
 	
-	public int getKop() { return kop; }
-	public Lijst getStaart() { return staart; }
+	public T getKop() { return kop; }
+	public Lijst<T> getStaart() { return staart; }
 	
-	public NietLegeLijst(int kop, Lijst staart) {
+	public NietLegeLijst(T kop, Lijst<T> staart) {
 		this.kop = kop;
 		this.staart = staart;
 	}
@@ -20,7 +20,7 @@ public class NietLegeLijst extends Lijst {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof NietLegeLijst nll &&
+		return obj instanceof NietLegeLijst<?> nll &&
 				kop == nll.kop &&
 				staart.equals(nll.staart);
 	}
